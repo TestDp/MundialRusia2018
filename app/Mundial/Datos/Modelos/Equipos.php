@@ -4,10 +4,10 @@ namespace Mundial\Datos\Modelos;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Fases extends Model
+class Equipos extends Model
 {
-    protected $table = 'Tbl_Fases';
-    protected $fillable =['Codigo_Fase','Nombre_Fase'];
+    protected $table = 'Tbl_Equipos';
+    protected $fillable =['Codigo_Equipo','Nombre_Equipo'];
 
     public function fases (){
         return $this->hasMany('Calendario');
