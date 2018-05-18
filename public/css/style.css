@@ -26,6 +26,16 @@
          url('../fonts/bold2.svg#bold2') format('svg');
 }
 
+@font-face {
+    font-family: 'menu';
+    src: url('../fonts/menu.eot');
+    src: url('../fonts/menu.eot') format('embedded-opentype'),
+         url('../fonts/menu.woff2') format('woff2'),
+         url('../fonts/menu.woff') format('woff'),
+         url('../fonts/menu.ttf') format('truetype'),
+         url('../fonts/menu.svg#menu') format('svg');
+}
+
 /* =======================================================
 *
 * 	Template Style 
@@ -85,7 +95,7 @@ p {
 
 h1, h2, h3, h4, h5, h6, figure {
   color: #000;
-  font-family: "Work Sans", Arial, sans-serif;
+  font-family: 'bold';
   font-weight: 400;
   margin: 0 0 20px 0;
 }
@@ -106,8 +116,9 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 
 .fh5co-nav .top-menu {
-  padding: 28px 0;
+  padding: 0px 0;
 }
+.text-right{padding-top:4% !important;}
 .fh5co-nav #fh5co-logo {
   font-size: 24px;
   margin: 0;
@@ -140,12 +151,13 @@ h1, h2, h3, h4, h5, h6, figure {
   display: inline;
 }
 .fh5co-nav ul li a {
-  font-size: 15px;
   padding: 30px 15px;
   color: #fff;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s;
+  font-family: 'menu';
+  font-size: 25px;
 }
 .fh5co-nav ul li a:hover, .fh5co-nav ul li a:focus, .fh5co-nav ul li a:active {
   color: black;
@@ -237,6 +249,8 @@ h1, h2, h3, h4, h5, h6, figure {
 .fh5co-nav ul li.active > a {
   color: #fff !important;
   position: relative;
+  font-family: 'menu';
+  font-size: 25px;
 }
 .fh5co-nav ul li.active > a:after {
   position: absolute;
@@ -517,6 +531,8 @@ h1, h2, h3, h4, h5, h6, figure {
   margin-bottom: 2em;
   display: block;
 }
+
+label{font-family: 'bold' !important;}
 
 #fh5co-content,
 #fh5co-consult {
@@ -1327,7 +1343,7 @@ h1, h2, h3, h4, h5, h6, figure {
 .btn {
   margin-right: 4px;
   margin-bottom: 4px;
-  font-family: "Work Sans", Arial, sans-serif;
+  font-family: bold;
   font-size: 16px;
   font-weight: 400;
   -webkit-border-radius: 30px;
@@ -1351,9 +1367,11 @@ h1, h2, h3, h4, h5, h6, figure {
 }
 
 .btn-primary {
-  background: #F95959;
+  background: red;
   color: #fff;
-  border: 2px solid #F95959;
+  border: 2px solid red;
+  font-family: menu;
+  font-size: 27px;
 }
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
   background: #fa7272 !important;

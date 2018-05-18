@@ -63,7 +63,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-2">
-						<div id="fh5co-logo"><a href="{{ url('/') }}"><img class="img-responsive" src="" alt=""></a></div>
+						<div id="fh5co-logo"><a href="{{ url('/') }}"><img src="{{ asset('images/logo.jpg') }}"></img></a></div>
 					</div>
 					<div class="col-xs-10 text-right menu-1">
 						<ul>
@@ -72,14 +72,29 @@
 							<li><a href="{{ url('/') }}">Calendario</a></li>
 							<li><a href="{{ url('/') }}">Historia</a></li>
 							<li><a href="{{ url('/') }}">Sedes</a></li>
-							@if (Route::has('login'))
-                                 @auth
-							 <li class="btn-cta"><a href="{{ url('/home') }}"><span>Home</span></a></li>
-							  @else
-							<li class="btn-cta"><a href="{{ route('login') }}"><span>Iniciar Sesión</span></a></li>
-							<li class="btn-cta"><a href="{{ route('register') }}"><span>Registrarse</span></a></li>
-							@endauth
-							 @endif
+													 
+							 @guest
+                           <li class="btn-cta"><a href="{{ route('login') }}"><span>{{ __('Iniciar Sesión') }}</span></a></li>
+                           <li class="btn-cta"><a href="{{ route('register') }}"><span>{{ __('Registrarse') }}</span></a></li>
+                       @else
+                           <li class="nav-item dropdown">
+                               <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                   {{ Auth::user()->name }} <span class="caret"></span>
+                               </a>
+
+                               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                   <a style="color: red;" class="dropdown-item" href="{{ route('logout') }}"
+                                      onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">
+                                       {{ __('Cerrar Sesión') }}
+                                   </a>
+
+                                   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                       @csrf
+                                   </form>
+                               </div>
+                           </li>
+                       @endguest
 						</ul>
 					</div>
 				</div>
