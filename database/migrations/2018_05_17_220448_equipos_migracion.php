@@ -17,6 +17,7 @@ class EquiposMigracion extends Migration
             $table->increments('id');
             $table->integer('Codigo_Equipo');
             $table->string('Nombre_Equipo');
+            $table->string('Imagen_Equipo');
             $table->timestamps();
         });
     }

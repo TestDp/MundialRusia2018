@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Equipos extends Model
 {
     protected $table = 'Tbl_Equipos';
-    protected $fillable =['Codigo_Equipo','Nombre_Equipo'];
+    protected $fillable =['Codigo_Equipo','Nombre_Equipo','Imagen_Equipo'];
 
     public function fases (){
         return $this->hasMany('Calendario');
