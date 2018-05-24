@@ -1538,4 +1538,12 @@ label{font-family: 'bold' !important;}
   opacity: 0;
 }
 
+.tituloCalendario {background-color: #c9e8fb; color:#000;}
+
+.tituloCalendario2 {background-color: #f3d4d5; color:#000;}
+
+.grupo{color:#11549d; font-size: 25px;}
+.grupo2{color:#da1c27; font-size: 25px;}
+.estadio{font-family: 'menu';}
+
 /*# sourceMappingURL=style.css.map */
