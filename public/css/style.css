@@ -723,8 +723,8 @@ label{font-family: 'bold' !important;}
   margin-bottom: 30px;
 }
 .fh5co-project > a {
-  display: block;
-  color: #000;
+  /*display: block;*/
+  color: transparent;
   position: relative;
   bottom: 0;
   overflow: hidden;

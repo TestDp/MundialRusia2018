@@ -71,10 +71,10 @@
                            <li class="btn-cta"><a href="{{ route('register') }}"><span>{{ __('Registrarse') }}</span></a></li>
                        @else
 						   <li class="active"><a href="{{ url('/') }}">Inicio</a></li>
-							<li><a href="{{ url('/') }}">Grupos</a></li>
+							<li><a href="{{ url('/grupos') }}">Grupos</a></li>
 							<li><a href="{{ url('/calendario') }}">Calendario</a></li>
 							<li><a href="{{ url('/') }}">Historia</a></li>
-							<li><a href="{{ url('/') }}">Sedes</a></li>
+							<li><a href="{{ url('/sedes') }}">Sedes</a></li>
                            <li class="nav-item dropdown">
                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                    {{ Auth::user()->name }} <span class="caret"></span>
