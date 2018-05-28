@@ -10,6 +10,6 @@ class Fases extends Model
     protected $fillable =['Codigo_Fase','Nombre_Fase'];
 
     public function fases (){
-        return $this->hasMany('Calendario');
+        return $this->hasMany('Calendario','Fase_id','id');
     }
 }

@@ -10,7 +10,7 @@ class Estadios extends Model
     protected $fillable =['Codigo_Estadio','Nombre_Estadio','Capacidad_Estadio',
                             'Descripcion_Estadio','Ciudad_Estadio','Imagen_Estadio'];
 
-    public function fases (){
-        return $this->hasMany('Calendario');
+    public function estadio (){
+        return $this->hasMany('Calendario','Estadio_id','id');
     }
 }
