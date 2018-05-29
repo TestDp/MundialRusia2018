@@ -15,10 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/calendario', function () {
-    return view('calendario');
-});
-
 Route::get('/grupos', function () {
     return view('grupos');
 });

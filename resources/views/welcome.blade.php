@@ -72,7 +72,7 @@
                        @else
 						   <li class="active"><a href="{{ url('/') }}">Inicio</a></li>
 							<li><a href="{{ url('/grupos') }}">Grupos</a></li>
-							<li><a href="{{ url('/calendario') }}">Calendario</a></li>
+							<li><a href="{{ url('Calendario') }}">Calendario</a></li>
 							<li><a href="{{ url('/') }}">Historia</a></li>
 							<li><a href="{{ url('/sedes') }}">Sedes</a></li>
                            <li class="nav-item dropdown">
