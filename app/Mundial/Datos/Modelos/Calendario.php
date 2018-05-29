@@ -16,19 +16,19 @@ class Calendario extends Model
                           'Tendencia','userField1','UserField2'];
 
     public function equipo1(){
-        return $this->belongsTo('Mundial\Datos\Modelos\Equipos');
+        return $this->belongsTo('Mundial\Datos\Modelos\Equipos', 'EquipoLocal_id');
     }
 
     public function equipo2(){
-        return $this->belongsTo('Mundial\Datos\Modelos\Equipos');
+        return $this->belongsTo('Mundial\Datos\Modelos\Equipos', 'EquipoVisitante_id');
     }
 
     public function fase(){
-        return $this->belongsTo('Mundial\Datos\Modelos\Fases');
+        return $this->belongsTo('Mundial\Datos\Modelos\Fases', 'Fase_id');
     }
 
     public function estadio(){
-        return $this->belongsTo('Mundial\Datos\Modelos\Estadios');
+        return $this->belongsTo('Mundial\Datos\Modelos\Estadios', 'Estadio_id');
     }
 
 
