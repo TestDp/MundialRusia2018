@@ -52,4 +52,25 @@ class CalendarioRepositorio
     //     $partidos = CalendarioUsuarios::where("user_id","=",$idUser)->get();
     //     return $partidos;
     // }
+
+    public function GuardarCalendarioUsuario($calendarioUsuario)
+    {
+        DB::beginTransaction();
+        try{
+            //inicio del bloque donde se guarda el evento para obtener el id del evento
+            $calendariouser = new CalendarioUsuario($calendarioUsuario->all());
+            
+            $calendariouser ->save();
+        
+            DB::commit();
+
+            }catch (\Exception $e) {
+
+            $error = $e->getMessage();
+            DB::rollback();
+            return  false;
+            //return $calendariouser ;
+            }
+        return true;
+    }
 }

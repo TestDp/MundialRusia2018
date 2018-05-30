@@ -32,3 +32,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('Calendario', ['uses' =>'Mundial\MundialController@ObtenerCalendario']);
+
+Route::post('Calendario',['uses' =>'Mundial\MundialController@GuardarCalendarioUsuario']);

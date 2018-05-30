@@ -11,6 +11,7 @@ use Mundial\Datos\Modelos\Estadios;
 use Mundial\Datos\Modelos\CalendarioUsuario;
 use Mundial\Negocio\Logica\CalendarioServicio;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 
 use Illuminate\Routing\Controller as BaseController;
@@ -37,6 +38,20 @@ class MundialController extends Controller
 
 
     }
+
+    public  function  GuardarCalendarioUsuario(Request $formCalendario)
+    {
+        $respuesta=$this->calendarioServicio->GuardarCalendarioUsuario($formCalendario);
+        // return response()->json($this->calendarioServicio->GuardarCalendarioUsuario($formCalendario));
+
+        if($respuesta =='true')
+        {
+            return redirect('/');
+        }
+        
+    }
+
+    
 
 
 
