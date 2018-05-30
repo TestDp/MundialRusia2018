@@ -53,24 +53,37 @@ class CalendarioRepositorio
     //     return $partidos;
     // }
 
-    public function GuardarCalendarioUsuario($calendarioUsuario)
+    public function GuardarCalendarioUsuario($calendarioUsuarioreq)
     {
         DB::beginTransaction();
         try{
             //inicio del bloque donde se guarda el evento para obtener el id del evento
-            $calendariouser = new CalendarioUsuario($calendarioUsuario->all());
             
-            $calendariouser ->save();
+            if ($calendarioUsuarioreq->Id_Calendario) 
+            {
+                foreach ($calendarioUsuarioreq->Id_Calendario as $calendarioUsuario) 
+                {
+                $calendariouser = new CalendarioUsuario($calendarioUsuarioreq->all());
+                $calendariouser->Id_Calendario = $calendarioUsuario;
+                $calendariouser->Id_Usuario = 4;//$calendarioUsuarioreq->Id_Usuario;
+                $calendariouser->Goles_Local = 2;//$calendarioUsuarioreq->Goles_Local;
+                $calendariouser->Goles_Visitante = 2;//$calendarioUsuarioreq->Goles_Visitante;
+                $calendariouser->Tendencia = 1;
+                $calendariouser->save();
+                }
+           
+            }
         
             DB::commit();
 
             }catch (\Exception $e) {
 
-            $error = $e->getMessage();
-            DB::rollback();
+             $error = $e->getMessage();
+             DB::rollback();
             return  false;
             //return $calendariouser ;
             }
+            //return $calendariouser ;
         return true;
     }
 }
