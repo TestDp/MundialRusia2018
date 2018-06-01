@@ -41,6 +41,16 @@ class CalendarioRepositorio
             $partidos->equipo2 = Equipos::where('id','=',$calendario ->EquipoVisitante_id)->get()->first();
             $partidos->Fases = Fases::where('id','=',$calendario ->Fase_id)->get()->first();
             $partidos->Estadio = Estadios::where('id','=',$calendario ->Estadio_id)->get()->first();
+            $marcador = CalendarioUsuario::where('Id_Usuario','=',4)->where('Id_Calendario','=',$calendario ->id)->get()->first();
+            
+            if ($marcador) 
+            {
+                $partidos->GolesLocal = $marcador->Goles_Local;
+                $partidos->GolesVisitante = $marcador->Goles_Visitante;
+                $partidos->Tendencia = $marcador->Tendencia;
+                
+
+            }
 
         }
         return $partidos;
@@ -55,22 +65,45 @@ class CalendarioRepositorio
 
     public function GuardarCalendarioUsuario($calendarioUsuarioreq)
     {
+
+      
         DB::beginTransaction();
         try{
-            //inicio del bloque donde se guarda el evento para obtener el id del evento
-            
+
+            // se debecontrolar que si el usuario ya tiene un registro para el calendario solo se debe modificar los goles
+            //inicio del bloque donde se guarda el calendario por usuario
+            $ind =0;
             if ($calendarioUsuarioreq->Id_Calendario) 
             {
                 foreach ($calendarioUsuarioreq->Id_Calendario as $calendarioUsuario) 
                 {
+                    $calendario = CalendarioUsuario::where('Id_Usuario','=',$calendarioUsuarioreq ->Id_Usuario)->
+                    where('Id_Calendario','=',$calendarioUsuario)->get()->first();
+
+                    if ($calendario) 
+                    {
+                        $calendario->Goles_Local = $calendarioUsuarioreq->Goles_Local[$ind];
+                        $calendario->Goles_Visitante = $calendarioUsuarioreq->Goles_Visitante[$ind];
+                        $calendario->save();
+
+                    }
+
+                    else
+                    {
+
                 $calendariouser = new CalendarioUsuario($calendarioUsuarioreq->all());
                 $calendariouser->Id_Calendario = $calendarioUsuario;
-                $calendariouser->Id_Usuario = 4;//$calendarioUsuarioreq->Id_Usuario;
-                $calendariouser->Goles_Local = 2;//$calendarioUsuarioreq->Goles_Local;
-                $calendariouser->Goles_Visitante = 2;//$calendarioUsuarioreq->Goles_Visitante;
-                $calendariouser->Tendencia = 1;
+                $calendariouser->Id_Usuario = $calendarioUsuarioreq->Id_Usuario;
+                $calendariouser->Goles_Local = $calendarioUsuarioreq->Goles_Local[$ind];
+                $calendariouser->Goles_Visitante = $calendarioUsuarioreq->Goles_Visitante[$ind];
+                $calendariouser->Tendencia = $calendarioUsuarioreq->Tendencia[$ind];
                 $calendariouser->save();
+                    }
+
+                $ind++;
+                
                 }
+               
            
             }
         

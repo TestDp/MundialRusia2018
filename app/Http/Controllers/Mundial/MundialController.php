@@ -31,10 +31,10 @@ class MundialController extends Controller
 
     public  function  ObtenerCalendario()
     {
-        $partidos = $this->calendarioServicio->ObtenerCalendario();
-        $ListaPartidos= array('partidos' => $partidos);
-        return view('Mundial/CalendarioMundialista',['ListaPartidos' => $ListaPartidos]);
-        // return response()->json($this->calendarioServicio->ObtenerCalendario());
+        // $partidos = $this->calendarioServicio->ObtenerCalendario();
+        // $ListaPartidos= array('partidos' => $partidos);
+        // return view('Mundial/CalendarioMundialista',['ListaPartidos' => $ListaPartidos]);
+         return response()->json($this->calendarioServicio->ObtenerCalendario());
 
 
     }
