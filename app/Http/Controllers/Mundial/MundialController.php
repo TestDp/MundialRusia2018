@@ -12,7 +12,7 @@ use Mundial\Datos\Modelos\CalendarioUsuario;
 use Mundial\Negocio\Logica\CalendarioServicio;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Routing\Controller as BaseController;
 
@@ -31,29 +31,21 @@ class MundialController extends Controller
 
     public  function  ObtenerCalendario()
     {
-        // $partidos = $this->calendarioServicio->ObtenerCalendario();
-        // $ListaPartidos= array('partidos' => $partidos);
-        // return view('Mundial/CalendarioMundialista',['ListaPartidos' => $ListaPartidos]);
-         return response()->json($this->calendarioServicio->ObtenerCalendario());
-
-
+        $user = Auth::user();
+         $partidos = $this->calendarioServicio->ObtenerCalendario($user->id);
+         $ListaPartidos= array('partidos' => $partidos);
+         return view('Mundial/CalendarioMundialista',['ListaPartidos' => $ListaPartidos]);
     }
 
     public  function  GuardarCalendarioUsuario(Request $formCalendario)
     {
-        // $respuesta=$this->calendarioServicio->GuardarCalendarioUsuario($formCalendario);
-         return response()->json($this->calendarioServicio->GuardarCalendarioUsuario($formCalendario));
-
-        // if($respuesta =='true')
-        // {
-        //     return redirect('/');
-        // }
-        
+        $respuesta=$this->calendarioServicio->GuardarCalendarioUsuario($formCalendario);
+        if($respuesta)
+        {
+            return redirect('/Calendario');
+        }else{
+            return redirect('/');
+        }
     }
 
-    
-
-
-
-    //use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 }

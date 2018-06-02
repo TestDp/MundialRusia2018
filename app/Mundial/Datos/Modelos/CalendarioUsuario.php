@@ -13,11 +13,11 @@ class CalendarioUsuario extends Model
                             'Tendencia','CampoAdicional','CampoAdicional2'];
 
     public function calendario(){
-        return $this->belongsTo('Calendario');
+        return $this->belongsTo('Calendario','Id_Calendario','id');
     }
 
     public function usuario(){
-        return $this->belongsTo('Usuario');
+        return $this->belongsTo('Usuario','Id_Usuario','id');
     }
 
 }

@@ -15,9 +15,9 @@ class CalendarioServicio
         $this->calendarioRepositorio = $calendarioRepositorio;
     }
 
-    public function ObtenerCalendario()
+    public function ObtenerCalendario($idUser)
     {
-        return $this->calendarioRepositorio->ObtenerCalendario();
+        return $this->calendarioRepositorio->ObtenerCalendario($idUser);
         
     }
 
@@ -25,4 +25,5 @@ class CalendarioServicio
     {
         return $this->calendarioRepositorio->GuardarCalendarioUsuario($calendarioUsuario);
     }
+
 }
