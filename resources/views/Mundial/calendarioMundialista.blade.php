@@ -33,11 +33,11 @@
 								</div>
 							<div class="col-md-9 text-center animate-box">
 							<div class="row">							
-								<div class="col-md-4 text-center animate-box"><h4 style="margin-top: 5%;">{{ $calendario->equipo1['Nombre_Equipo'] }}</div>
+								<div class="col-md-4 text-center animate-box"><h4 style="margin-top: 5%;">{{ $calendario->equipo1['Nombre_Equipo'] }}<img src="http://localhost:100/MundialRusia2018/trunk/public/images/banderas/{{ $calendario->equipo1['Imagen_Equipo'] }}"></img></div>
 								<div class="col-md-1 text-center animate-box"><input style="padding: 12px; background:#fff; font-weight: 700;" id="Goles_Local" name="Goles_Local[{{$loop->index}}]" type="text" class="form-control" placeholder="{{ $calendario->GolesLocal }}"/> </div>
 								<div class="col-md-2 text-center animate-box"><h4 style="margin-top: 5%;">VS</h4></div>
 								<div class="col-md-1 text-center animate-box"><input style="padding: 12px; background:#fff; font-weight: 700;" id="Goles_Visitante" name="Goles_Visitante[{{$loop->index}}]" type="text" class="form-control" placeholder="{{ $calendario->GolesVisitante }}"/></div>
-								<div class="col-md-4 text-center animate-box"><h4 style="margin-top: 5%;">{{ $calendario->equipo2['Nombre_Equipo'] }} </h4></div>
+								<div class="col-md-4 text-center animate-box"><h4 style="margin-top: 5%;"><img src="http://localhost:100/MundialRusia2018/trunk/public/images/banderas/{{ $calendario->equipo2['Imagen_Equipo'] }}"></img>{{ $calendario->equipo2['Nombre_Equipo'] }} </h4></div>
 							</div>
 							<div class="row">
 								<div class="col-md-4 text-center">
