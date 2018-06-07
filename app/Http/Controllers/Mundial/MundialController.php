@@ -39,13 +39,7 @@ class MundialController extends Controller
 
     public  function  GuardarCalendarioUsuario(Request $formCalendario)
     {
-        $respuesta=$this->calendarioServicio->GuardarCalendarioUsuario($formCalendario);
-        if($respuesta)
-        {
-            return redirect('/Calendario');
-        }else{
-            return redirect('/');
-        }
+        return response()->json($this->calendarioServicio->GuardarCalendarioUsuario($formCalendario));
     }
 
 }

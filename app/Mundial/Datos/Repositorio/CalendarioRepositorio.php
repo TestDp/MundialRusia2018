@@ -57,7 +57,7 @@ class CalendarioRepositorio
         try{
             // se debecontrolar que si el usuario ya tiene un registro para el calendario solo se debe modificar los goles
             //inicio del bloque donde se guarda el calendario por usuario
-            $ind =0;
+            $ind =$calendarioUsuarioreq->index;
             if ($calendarioUsuarioreq->Id_Calendario)
             {
                 foreach ($calendarioUsuarioreq->Id_Calendario as $calendarioUsuario)

@@ -11,19 +11,21 @@
 								<img style="display: initial !important;" class="img-responsive" src="{{ asset('images/calendario.png') }}"></img>
 							</div>
 						</div>
-						<form id="datosCalendarioUsuario" action="Calendario" method="POST" enctype="multipart/form-data">
+						@foreach($ListaPartidos["partidos"] as $calendario)
+						<form id="datosCalendarioUsuario">
 							<input type="hidden" id="Id_Usuario" name="Id_Usuario" value="{{ Auth::user()->id }}"/>
+							<input type="hidden" id="index" name="index" value="{{$loop->index}}"/>
 
 							<input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 							<div class="card-body">
 
-								@foreach($ListaPartidos["partidos"] as $calendario)
+
 									<div class="col-md-12 animate-box tituloCalendario">Partido: <b>{{ $calendario->Orden }}</b></div>
 									<input type="hidden" id="Id_Calendario" name="Id_Calendario[{{$loop->index}}]" value="{{ $calendario->id }}"/>
 									<div class="col-md-12 animate-box tituloCalendario2">Fecha y Hora: <b>{{ $calendario->Fecha_Partido }}</b></div>
 									<div style="padding:1%;" class="col-md-12 text-center animate-box">
 										<div class="row">
-											<div class="col-md-3 animate-box">
+											<div class="col-md-2 animate-box">
 												<h4>Grupo {{ $calendario->Grupo }}</h4>
 												<h4>{{ $calendario->estadio['Nombre_Estadio'] }}</h4>
 												<h4>{{ $calendario->fase['Nombre_Fase'] }}</h4>
@@ -122,27 +124,23 @@
 
 												</div>
 											</div>
+											<div class="col-md-1">
+												<input type="button" onclick="GrabarMarcador(this)" class="btn btn-blue ripple trial-button" value="Guardar"/>
+											</div>
 										</div>
 
 									</div>
-								@endforeach
 
-
-							</div>
-							<div class="row">
-								<div class="col-md-12">
-									<button type="submit"  class="btn btn-blue ripple trial-button">
-										Guardar
-									</button>
-								</div>
 							</div>
 						</form>
+						@endforeach
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	</tbody>
-	<script src="{{ asset('js/Plugins/Jquery/jquery-3.1.1.js') }}"></script>
+
+	<script src="{{ asset('js/Mundial/mundial.js') }}"></script>
 
 @endsection
